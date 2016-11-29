@@ -10,15 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
+var shared_service_1 = require('../services/shared.service');
 var FormComponent = (function () {
-    function FormComponent(fb) {
+    function FormComponent(fb, sharedService) {
         this.fb = fb;
+        this.sharedService = sharedService;
     }
     FormComponent.prototype.ngOnInit = function () {
+        this.regexPatterns = this.sharedService.getRegexPatterns();
         this.user = this.fb.group({
             firstName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(2)]],
             lastName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(2)]],
-            email: ['', [forms_1.Validators.required, forms_1.Validators.pattern("[a-zA-Z0-9!#$%&/'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?")]]
+            email: ['', [forms_1.Validators.required, forms_1.Validators.pattern(this.regexPatterns.email)]]
         });
     };
     FormComponent = __decorate([
@@ -27,7 +30,7 @@ var FormComponent = (function () {
             selector: "reactive-form",
             templateUrl: "form.component.html"
         }), 
-        __metadata('design:paramtypes', [forms_1.FormBuilder])
+        __metadata('design:paramtypes', [forms_1.FormBuilder, shared_service_1.SharedService])
     ], FormComponent);
     return FormComponent;
 }());

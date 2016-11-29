@@ -9,6 +9,8 @@ import { AppRoutingModule } from './router/app-routing.module';
 import { AppComponent }     from './app.component';
 import { FormComponent }    from './form/form.component';
 
+import { SharedService }    from './services/shared.service';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -21,7 +23,7 @@ import { FormComponent }    from './form/form.component';
         FormComponent
     ],
     providers: [
-
+        SharedService
     ],
     bootstrap: [ AppComponent ]
 })

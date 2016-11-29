@@ -16,6 +16,7 @@ var forms_1 = require('@angular/forms');
 var app_routing_module_1 = require('./router/app-routing.module');
 var app_component_1 = require('./app.component');
 var form_component_1 = require('./form/form.component');
+var shared_service_1 = require('./services/shared.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,7 +32,9 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 form_component_1.FormComponent
             ],
-            providers: [],
+            providers: [
+                shared_service_1.SharedService
+            ],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

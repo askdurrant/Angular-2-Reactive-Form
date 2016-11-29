@@ -1,5 +1,6 @@
 import { Component, OnInit }    from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SharedService } from '../services/shared.service';
 
 @Component({
     moduleId: module.id,
@@ -9,13 +10,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export class FormComponent implements OnInit {
     user: FormGroup;
-    constructor(private fb: FormBuilder) {}
+    regexPatterns: any;
+
+    constructor(
+        private fb: FormBuilder, 
+        private sharedService: SharedService
+    ) {}
 
     ngOnInit() {
+        this.regexPatterns = this.sharedService.getRegexPatterns();
+
         this.user = this.fb.group({
             firstName: ['', [Validators.required, Validators.minLength(2)]],
             lastName: ['', [Validators.required, Validators.minLength(2)]],
-            email: ['', [Validators.required, Validators.pattern("[a-zA-Z0-9!#$%&/'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?")]]
+            email: ['', [Validators.required, Validators.pattern(this.regexPatterns.email)]]
         })
     }
 }
