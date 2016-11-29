@@ -1,0 +1,35 @@
+<h2>Form</h2>
+
+<form novalidate [formGroup]="user">
+    <label>
+        <span>First name</span>
+        <input type="text" formControlName="firstName" placeholder="Your first name">
+    </label>
+
+    <div class="error" *ngIf="user.get('firstName').touched && user.get('firstName').hasError('required')">
+        First name is required
+    </div>
+
+    <label>
+        <span>Last name</span>
+        <input type="text" formControlName="lastName" placeholder="Your last name">
+    </label>
+
+    <div class="error" *ngIf="user.get('lastName').touched && user.get('lastName').hasError('required')">
+        Last name is required
+    </div>
+
+    <label>
+        <span>Email</span>
+        <input type="text" formControlName="email" placeholder="Your email">
+    </label>
+
+    <div class="error" *ngIf="user.get('email').touched && user.get('email').hasError('required')">
+        Email is required
+    </div>
+    <div class="error" *ngIf="user.get('email').touched && user.get('email').hasError('pattern')">
+        Email has a problem
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
