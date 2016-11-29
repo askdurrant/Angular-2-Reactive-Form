@@ -28,7 +28,8 @@ var FormComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: "reactive-form",
-            templateUrl: "form.component.html"
+            templateUrl: "form.component.html",
+            styleUrls: ["form.component.css"]
         }), 
         __metadata('design:paramtypes', [forms_1.FormBuilder, shared_service_1.SharedService])
     ], FormComponent);

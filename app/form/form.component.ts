@@ -5,7 +5,8 @@ import { SharedService } from '../services/shared.service';
 @Component({
     moduleId: module.id,
     selector: "reactive-form",
-    templateUrl: "form.component.html"
+    templateUrl: "form.component.html",
+    styleUrls: ["form.component.css"]
 })
 
 export class FormComponent implements OnInit {

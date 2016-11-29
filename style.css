@@ -1,0 +1,14 @@
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #1b1b1b;
+    font-weight: 200;
+    background: #913D88;
+}
+
+h1{
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 1px;
+    margin: 60px 0;
+    font-weight: 200;
+}

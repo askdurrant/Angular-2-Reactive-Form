@@ -1,35 +1,27 @@
-<h2>Form</h2>
+<div class="form-container">
+    <form novalidate [formGroup]="user">
 
-<form novalidate [formGroup]="user">
-    <label>
-        <span>First name</span>
-        <input type="text" formControlName="firstName" placeholder="Your first name">
-    </label>
+        <label>First name</label>
+        <input type="text" formControlName="firstName">
+        <div class="error" *ngIf="user.get('firstName').touched && user.get('firstName').hasError('required')">
+            <span>First name is required</span>
+        </div>
 
-    <div class="error" *ngIf="user.get('firstName').touched && user.get('firstName').hasError('required')">
-        First name is required
-    </div>
+        <label>Last name</label>
+        <input type="text" formControlName="lastName">
+        <div class="error" *ngIf="user.get('lastName').touched && user.get('lastName').hasError('required')">
+            <span>Last name is required</span>
+        </div>
 
-    <label>
-        <span>Last name</span>
-        <input type="text" formControlName="lastName" placeholder="Your last name">
-    </label>
+        <label>Email</label>
+        <input type="text" formControlName="email">
+        <div class="error" *ngIf="user.get('email').touched && user.get('email').hasError('required')">
+            <span>Email is required</span>
+        </div>
+        <div class="error" *ngIf="user.get('email').touched && user.get('email').hasError('pattern')">
+            <span>Email has a problem</span>
+        </div>
 
-    <div class="error" *ngIf="user.get('lastName').touched && user.get('lastName').hasError('required')">
-        Last name is required
-    </div>
-
-    <label>
-        <span>Email</span>
-        <input type="text" formControlName="email" placeholder="Your email">
-    </label>
-
-    <div class="error" *ngIf="user.get('email').touched && user.get('email').hasError('required')">
-        Email is required
-    </div>
-    <div class="error" *ngIf="user.get('email').touched && user.get('email').hasError('pattern')">
-        Email has a problem
-    </div>
-
-    <button type="submit">Submit</button>
-</form>
+        <button type="submit" [disabled]="!user.valid">Submit</button>
+    </form>
+</div>
