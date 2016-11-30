@@ -1,5 +1,5 @@
 <div class="form-container">
-    <form novalidate [formGroup]="user">
+    <form novalidate (ngSubmit)="onSubmit(user)" [formGroup]="user">
 
         <label>First name</label>
         <input type="text" formControlName="firstName">

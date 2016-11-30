@@ -2,6 +2,8 @@ import { Component, OnInit }    from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../services/shared.service';
 
+import { User } from '../interfaces/user.interface';
+
 @Component({
     moduleId: module.id,
     selector: "reactive-form",
@@ -26,5 +28,9 @@ export class FormComponent implements OnInit {
             lastName: ['', [Validators.required, Validators.minLength(2)]],
             email: ['', [Validators.required, Validators.pattern(this.regexPatterns.email)]]
         })
+    }
+
+    onSubmit({value, valid}: {value: User, valid: boolean}){
+        console.log(value, valid);
     }
 }

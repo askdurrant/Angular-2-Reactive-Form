@@ -24,6 +24,10 @@ var FormComponent = (function () {
             email: ['', [forms_1.Validators.required, forms_1.Validators.pattern(this.regexPatterns.email)]]
         });
     };
+    FormComponent.prototype.onSubmit = function (_a) {
+        var value = _a.value, valid = _a.valid;
+        console.log(value, valid);
+    };
     FormComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
